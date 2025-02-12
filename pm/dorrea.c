@@ -21,6 +21,10 @@ int main(int argc, char *argv[]) {
   }
   char *endptr;
   long n =  strtol(argv[1], &endptr, 10);
-  dorreaMarraztu(n);
+  if (n > 0) {
+    dorreaMarraztu(n);
+  } else {
+    printf("Sartu 0 baino handiagoa den zenbaki bat\n")
+  }
   return 0;
 }
