@@ -2,13 +2,16 @@
 #include <stdlib.h> //strtol erabiltzeko
 
 
-void fib(long amount, long i, long j) { //fibonacci errekurtsibo kutrea
-  if (amount <= 0) {
-    return;
+long fib(long amount) { //fibonacci iteratibo kutrea
+  long i = 0;
+  long j = 1;
+  long aux = 0;
+  for (long k = 0;k < amount-1;k++) {
+    aux = i;
+    i = j;
+    j = i+aux;
   }
-
-  printf("%ld ", i+j);
-  fib(amount-1, j, i+j);
+  return j;
 }
 
 //programa hemendik hasten da
@@ -22,7 +25,6 @@ int main(int argc, char *argv[]) { //args jaso
   char *endptr;
   long amount = strtol(argv[1], &endptr, 10); //pasa argumentua amount baliora base 10
   
-  fib(amount, 1, 0);
-  printf("\n");
+  printf("%ld\n", fib(amount));
   return 0;
 }
