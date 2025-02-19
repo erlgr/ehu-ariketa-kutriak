@@ -3,9 +3,7 @@
 
 
 long fib(long amount, long i, long j) { //fibonacci errekurtsibo kutrea
-  if (amount <= 0) {
-    return 0;
-  } else if (amount == 1) {
+  if (amount == 1) {
     return i+j;
   }
 
@@ -23,7 +21,12 @@ int main(int argc, char *argv[]) { //args jaso
   char *endptr;
   long amount = strtol(argv[1], &endptr, 10); //pasa argumentua amount baliora base 10
   
-  
-  printf("%ld\n", fib(amount, 1, 0));
+  if (amount == 0) { //0 kasua zaindu (behin)
+    printf("0\n");
+  } else if (amount < 0) { //minus kasua zaindu segfaultak ez egoteko
+    printf("ezin da zenbaki honen fibonacci kalkulatu\n");
+  } else {
+    printf("%ld\n", fib(amount, 1, 0));
+  }
   return 0;
 }
