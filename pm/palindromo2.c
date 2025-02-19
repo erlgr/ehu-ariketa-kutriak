@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-//bertsio iteratiboa
+//bertsio errekurtsiboa
 //Programa hau ez dago prest maiuskulak eta minuskulak desberdintzeko
-int pal(char word[], int size) {
-  for (int i = 0;i <= size; i++) {
-    size -= 1;
-    if (word[i] != word[size]) {
+int pal(char word[], int size, int i) {
+  if (size >= i) {
+    if (word[size-1] == word[i]) {
+      return pal(word, size-1, i+1);
+    } else {
       return 0;
     }
   }
@@ -21,7 +22,7 @@ int main(int argc, char *argv[]) { //args jaso
   }
   char *word = argv[1];
   int size = strlen(word);
-  if (pal(word, size) == 1) {
+  if (pal(word, size, 0) == 1) {
     printf("%s palindromoa da.\n", word);
   } else {
     printf("%s ez da palindromoa.\n", word);
