@@ -25,6 +25,10 @@ int main(int argc, char *argv[]) { //args jaso
   char *endptr;
   long amount = strtol(argv[1], &endptr, 10); //pasa argumentua amount baliora base 10
   
-  printf("%ld\n", fib(amount));
+  if (amount == 0) {
+    printf("0\n");
+  } else {
+    printf("%ld\n", fib(amount));
+  }
   return 0;
 }
